@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мой Планировщик</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Геймифицированный Планировщик</h1>
+
+    <div class="avatar">
+      <img id="avatarImg" src="img/lv1.png" alt="Аватар">
+    </div>
+
+    <div class="stats">
+      <p>Уровень: <span id="level">1</span></p>
+      <p>Опыт: <span id="xp">0</span> / <span id="xpNeeded">100</span></p>
+      <div class="progress-bar">
+        <div id="xpBar"></div>
+      </div>
+    </div>
+
+    <form id="taskForm">
+      <input type="text" id="taskInput" placeholder="Новая задача..." required />
+      <button type="submit">Добавить</button>
+    </form>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
