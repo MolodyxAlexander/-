@@ -86,3 +86,47 @@ li.completed {
   background: #c8e6c9;
   text-decoration: line-through;
 }
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f0f0f0;
+}
+nav {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+nav ul li {
+  display: inline;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}
+.container {
+  padding: 20px;
+}
+.hidden {
+  display: none;
+}
+.avatar img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+form {
+  margin-top: 20px;
+}
+#task-list li {
+  margin: 10px 0;
+}
