@@ -1,33 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Мой Планировщик</title>
+  <title>Геймифицированный Планировщик</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Геймифицированный Планировщик</h1>
+  <nav>
+    <h2>Планировщик</h2>
+    <ul>
+      <li><a href="#" onclick="showSection('main')">Главная</a></li>
+      <li><a href="#" onclick="showSection('profile')">Профиль</a></li>
+      <li><a href="#" onclick="logout()">Выйти</a></li>
+    </ul>
+  </nav>
 
+  <div class="container" id="authSection">
+    <h2>Вход / Регистрация</h2>
+    <input type="text" id="username" placeholder="Имя пользователя" required />
+    <input type="password" id="password" placeholder="Пароль" required />
+    <button onclick="login()">Войти</button>
+    <button onclick="register()">Регистрация</button>
+    <p id="authMessage"></p>
+  </div>
+
+  <div class="container hidden" id="mainSection">
+    <h1>Привет, <span id="userDisplay"></span>!</h1>
     <div class="avatar">
-      <img id="avatarImg" src="img/lv1.png" alt="Аватар">
+      <select id="avatar-selector" onchange="changeAvatar()">
+        <option value="avatar1.png">Аватар 1</option>
+        <option value="avatar2.png">Аватар 2</option>
+      </select>
+      <img id="avatar" src="img/avatar1.png" alt="Аватар" />
     </div>
-
     <div class="stats">
-      <p>Уровень: <span id="level">1</span></p>
-      <p>Опыт: <span id="xp">0</span> / <span id="xpNeeded">100</span></p>
-      <div class="progress-bar">
-        <div id="xpBar"></div>
-      </div>
+      <p>Ранг: <span id="rank">Новичок</span></p>
+      <p>Очки: <span id="points">0</span></p>
     </div>
-
-    <form id="taskForm">
-      <input type="text" id="taskInput" placeholder="Новая задача..." required />
+    <form id="taskForm" onsubmit="addTask(); return false;">
+      <input type="text" id="task-input" placeholder="Новая задача..." required />
       <button type="submit">Добавить</button>
     </form>
-
-    <ul id="taskList"></ul>
+    <ul id="task-list"></ul>
   </div>
 
   <script src="script.js"></script>
