@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,44 +7,65 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <nav>
-    <h2>Планировщик</h2>
-    <ul>
-      <li><a href="#" onclick="showSection('main')">Главная</a></li>
-      <li><a href="#" onclick="showSection('profile')">Профиль</a></li>
-      <li><a href="#" onclick="logout()">Выйти</a></li>
-    </ul>
-  </nav>
-
-  <div class="container" id="authSection">
-    <h2>Вход / Регистрация</h2>
-    <input type="text" id="username" placeholder="Имя пользователя" required />
-    <input type="password" id="password" placeholder="Пароль" required />
+  <div class="auth" id="auth-section">
+    <h2>Вход</h2>
+    <input type="text" id="username" placeholder="Введите имя" />
     <button onclick="login()">Войти</button>
-    <button onclick="register()">Регистрация</button>
-    <p id="authMessage"></p>
   </div>
 
-  <div class="container hidden" id="mainSection">
-    <h1>Привет, <span id="userDisplay"></span>!</h1>
-    <div class="avatar">
-      <select id="avatar-selector" onchange="changeAvatar()">
-        <option value="avatar1.png">Аватар 1</option>
-        <option value="avatar2.png">Аватар 2</option>
-      </select>
-      <img id="avatar" src="img/avatar1.png" alt="Аватар" />
+  <div class="main" id="main-section" style="display:none;">
+    <header class="header">
+      <div class="logo">Планировщик</div>
+      <div class="nav-buttons">
+        <button onclick="showTab('home')">Главная</button>
+        <button onclick="showTab('profile')">Профиль</button>
+        <button onclick="logout()">Выйти</button>
+      </div>
+    </header>
+
+    <div class="tab-content" id="home-tab">
+      <h2>Мои задачи</h2>
+      <form onsubmit="addTask(); return false;">
+        <input type="text" id="task-input" placeholder="Введите задачу..." required />
+        <select id="day-select">
+          <option value="monday">Понедельник</option>
+          <option value="tuesday">Вторник</option>
+          <option value="wednesday">Среда</option>
+          <option value="thursday">Четверг</option>
+          <option value="friday">Пятница</option>
+          <option value="saturday">Суббота</option>
+          <option value="sunday">Воскресенье</option>
+        </select>
+        <button type="submit">Добавить</button>
+      </form>
+
+      <div id="tasks-by-day">
+        <h3>Понедельник</h3><ul id="monday"></ul>
+        <h3>Вторник</h3><ul id="tuesday"></ul>
+        <h3>Среда</h3><ul id="wednesday"></ul>
+        <h3>Четверг</h3><ul id="thursday"></ul>
+        <h3>Пятница</h3><ul id="friday"></ul>
+        <h3>Суббота</h3><ul id="saturday"></ul>
+        <h3>Воскресенье</h3><ul id="sunday"></ul>
+      </div>
     </div>
-    <div class="stats">
-      <p>Ранг: <span id="rank">Новичок</span></p>
+
+    <div class="tab-content" id="profile-tab" style="display:none;">
+      <h2>Профиль: <span id="user-display"></span></h2>
+      <div class="avatar-container">
+        <img id="avatar" src="img/default.png" alt="Аватар" />
+        <input type="file" id="avatar-upload" accept="image/*" />
+        <button onclick="removeAvatar()">Удалить аватар</button>
+      </div>
+      <p>Уровень: <span id="level">1</span></p>
       <p>Очки: <span id="points">0</span></p>
+      <p>Ранг: <span id="rank">Новичок</span></p>
     </div>
-    <form id="taskForm" onsubmit="addTask(); return false;">
-      <input type="text" id="task-input" placeholder="Новая задача..." required />
-      <button type="submit">Добавить</button>
-    </form>
-    <ul id="task-list"></ul>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
+
+  
